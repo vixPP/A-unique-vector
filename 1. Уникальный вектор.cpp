@@ -1,16 +1,12 @@
 ﻿#include <iostream>
 #include <vector>
+#include <set>
 #include <algorithm>
 
-std::vector<int> removeDuplic(std::vector<int> vec)
+static std::vector<int> removeDuplic(const std::vector<int>& vec)
 {
-    std::sort(vec.begin(), vec.end());
-
-    auto it = std::unique(vec.begin(), vec.end());
-
-    vec.erase(it, vec.end());
-
-    return vec;
+    std::set<int> uniqueElements(vec.begin(), vec.end());
+    return std::vector<int>(uniqueElements.begin(), uniqueElements.end());
 }
 
 int main()
